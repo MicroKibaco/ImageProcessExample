@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 
@@ -16,12 +15,10 @@ import com.asiainfo.imageprocess.utils.ImageHelper;
  */
 public class PrimaryColorActivity extends Activity implements SeekBar.OnSeekBarChangeListener {
 
-    private ImageView mImgPimaryColor;
-    private SeekBar mSeekBarHue, mSeekBarSaturation, mSeekBarLum;
-
     private static final int MAX_VALUE = 200;
     private static final int MID_VALUE = 99;
-
+    private ImageView mImgPimaryColor;
+    private SeekBar mSeekBarHue, mSeekBarSaturation, mSeekBarLum;
     private float mHue, mSaturation, mLum;
 
     private Bitmap mBitmap;
@@ -103,7 +100,6 @@ public class PrimaryColorActivity extends Activity implements SeekBar.OnSeekBarC
                 break;
 
         }
-        Log.e("TAG:","mHue="+mHue+" ,mSaturation=" +mSaturation+" ,mLum=" +mLum);
         Bitmap newBitmap = ImageHelper.handleImageEffect(mBitmap, mHue, mSaturation, mLum);
         mImgPimaryColor.setImageBitmap(newBitmap);
 

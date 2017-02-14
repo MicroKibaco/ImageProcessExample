@@ -20,8 +20,10 @@
             android:text="色管三元素的调整"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
     <Button
-            android:text="色管三元素的调整"
+            android:id="@+id/btn_matrix_color"
+            android:text="实现图像的变化处理"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 </LinearLayout>
