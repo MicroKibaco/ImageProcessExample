@@ -3,6 +3,10 @@ package com.asiainfo.imageprocess.activity;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,28 +41,6 @@ public class ColorMatrixActivity extends Activity implements View.OnClickListene
         initEvent();
     }
 
-    private void initEvent() {
-
-        mEtGroup.post(new Runnable() {
-            @Override
-            public void run() {
-
-                mEtWidth = mEtGroup.getWidth() / 5;
-                mEtHeight = mEtGroup.getHeight() / 4;
-                addEditTexts();
-                initMatrix();//赋值
-
-            }
-        });
-
-    }
-
-    private void initListener() {
-
-        mBtnChange.setOnClickListener(this);
-        mBtnReset.setOnClickListener(this);
-
-    }
 
     private void initView() {
 
@@ -68,6 +50,52 @@ public class ColorMatrixActivity extends Activity implements View.OnClickListene
         mBtnChange = (Button) findViewById(R.id.btn_change);
         mBtnReset = (Button) findViewById(R.id.btn_reset);
         mImgViewMatrix.setImageBitmap(mBitmap);
+    }
+
+    private void initListener() {
+
+        mBtnChange.setOnClickListener(this);
+        mBtnReset.setOnClickListener(this);
+
+    }
+
+    private void initEvent() {
+
+        mEtGroup.post(new Runnable() {
+            @Override
+            public void run() {
+
+                mEtWidth = mEtGroup.getWidth() / 5;
+                mEtHeight = mEtGroup.getHeight() / 4;
+                addEditTexts();//显示20个EditText
+                initMatrix();//赋值
+
+            }
+        });
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+
+            case R.id.btn_change:
+
+                getMatrix();
+                setImageMatrix();
+
+                break;
+
+            case R.id.btn_reset:
+
+                initMatrix();
+                getMatrix();
+                setImageMatrix();
+
+                break;
+
+        }
+
     }
 
     /***
@@ -105,9 +133,35 @@ public class ColorMatrixActivity extends Activity implements View.OnClickListene
 
     }
 
+    /***
+     * 获取当前所有EditText的所有值
+     */
+    private void getMatrix() {
 
-    @Override
-    public void onClick(View v) {
+        for (int i = 0; i < TOTAL_COUNT_EDITTEXT; i++) {
+
+            mColorMatrix[i] = Float.valueOf(mEts[i].getText().toString());
+
+        }
 
     }
+
+
+    /***
+     * 将颜色矩阵应用的我们的EditText
+     */
+    private void setImageMatrix() {
+
+        Bitmap bmp = Bitmap.createBitmap(mBitmap.getWidth(), mBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        ColorMatrix colormatrix = new ColorMatrix();
+        colormatrix.set(mColorMatrix);
+
+        Canvas canvas = new Canvas(bmp);
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setColorFilter(new ColorMatrixColorFilter(colormatrix));
+        canvas.drawBitmap(mBitmap, 0, 0, paint);
+        mImgViewMatrix.setImageBitmap(bmp);
+
+    }
+
 }
