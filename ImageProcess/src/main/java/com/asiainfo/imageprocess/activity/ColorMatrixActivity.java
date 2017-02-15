@@ -8,6 +8,7 @@ import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,15 +22,19 @@ import com.asiainfo.imageprocess.R;
  */
 public class ColorMatrixActivity extends Activity implements View.OnClickListener {
 
-    private static final int TOTAL_COUNT_EDITTEXT = 20;
+    private static final int TOTAL_COUNT_EDITTEXT = 20;//EditText个数
+    private static final int LINE = 5;//行
+    private static final int ROW = 4;//列
+    private EditText[] mEts = new EditText[TOTAL_COUNT_EDITTEXT];
+    private float[] mColorMatrix = new float[TOTAL_COUNT_EDITTEXT]; //对应PPT的矩阵
+
     private ImageView mImgViewMatrix;
     private GridLayout mEtGroup;
     private Button mBtnChange;
     private Button mBtnReset;
     private Bitmap mBitmap;
     private int mEtWidth, mEtHeight;
-    private EditText[] mEts = new EditText[20];
-    private float[] mColorMatrix = new float[20]; //对应PPT的矩阵
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,8 +70,8 @@ public class ColorMatrixActivity extends Activity implements View.OnClickListene
             @Override
             public void run() {
 
-                mEtWidth = mEtGroup.getWidth() / 5;
-                mEtHeight = mEtGroup.getHeight() / 4;
+                mEtWidth = mEtGroup.getWidth() / LINE;
+                mEtHeight = mEtGroup.getHeight() / ROW;
                 addEditTexts();//显示20个EditText
                 initMatrix();//赋值
 
@@ -106,6 +111,7 @@ public class ColorMatrixActivity extends Activity implements View.OnClickListene
         for (int i = 0; i < TOTAL_COUNT_EDITTEXT; i++) {
 
             EditText singleEditText = new EditText(this);
+            singleEditText.setGravity(Gravity.CENTER);
             mEts[i] = singleEditText;
             mEtGroup.addView(singleEditText, mEtWidth, mEtHeight);
 

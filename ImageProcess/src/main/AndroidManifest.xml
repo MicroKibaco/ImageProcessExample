@@ -20,6 +20,7 @@
         <activity android:name=".activity.PrimaryColorActivity"/>
         <activity android:name=".activity.ColorMatrixActivity"/>
         <activity android:name=".activity.PixelsActivity"/>
+        <activity android:name=".activity.MatrixActivity"/>
     </application>
 
 </manifest>

@@ -13,6 +13,7 @@ public class ImageProcessActivity extends Activity implements View.OnClickListen
     private Button mBtnPrimaryColor;
     private Button mBtnMatrixColor;
     private Button mBtnPixelsEffect;
+    private Button mBtnMatrix;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,7 @@ public class ImageProcessActivity extends Activity implements View.OnClickListen
         mBtnPrimaryColor.setOnClickListener(this);
         mBtnMatrixColor.setOnClickListener(this);
         mBtnPixelsEffect.setOnClickListener(this);
+        mBtnMatrix.setOnClickListener(this);
 
     }
 
@@ -37,6 +39,7 @@ public class ImageProcessActivity extends Activity implements View.OnClickListen
         mBtnPrimaryColor = (Button) findViewById(R.id.btn_primary_color);
         mBtnMatrixColor = (Button) findViewById(R.id.btn_matrix_color);
         mBtnPixelsEffect = (Button) findViewById(R.id.btn_pixels_effect);
+        mBtnMatrix = (Button) findViewById(R.id.btn_Matrix);
 
     }
 
@@ -60,6 +63,11 @@ public class ImageProcessActivity extends Activity implements View.OnClickListen
             case R.id.btn_pixels_effect:
 
                 startActivity(new Intent(this, PixelsActivity.class));
+
+                break;
+
+            case R.id.btn_Matrix:
+                startActivity(new Intent(this, MatrixActivity.class));
 
                 break;
 
