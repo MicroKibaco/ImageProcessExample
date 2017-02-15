@@ -22,6 +22,8 @@
         <activity android:name=".activity.RoundRectXfermodeActivity"/>
         <activity android:name=".activity.BitmapShaderActivity"/>
         <activity android:name=".activity.ReflectActivity"/>
+        <activity android:name=".activity.MeshActivity">
+        </activity>
     </application>
 
 </manifest>

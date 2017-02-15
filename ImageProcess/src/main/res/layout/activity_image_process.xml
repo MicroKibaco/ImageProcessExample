@@ -56,4 +56,10 @@
             android:text="镜面与倒影效果"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
+    <Button
+            android:id="@+id/btn_Mesh"
+            android:text="终极大招drawBitmapMesh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 </LinearLayout>
