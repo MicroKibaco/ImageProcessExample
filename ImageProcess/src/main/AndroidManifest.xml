@@ -20,8 +20,8 @@
         <activity android:name=".activity.PixelsActivity"/>
         <activity android:name=".activity.MatrixActivity"/>
         <activity android:name=".activity.RoundRectXfermodeActivity"/>
-        <activity android:name=".activity.BitmapShaderActivity">
-        </activity>
+        <activity android:name=".activity.BitmapShaderActivity"/>
+        <activity android:name=".activity.ReflectActivity"/>
     </application>
 
 </manifest>

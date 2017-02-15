@@ -16,6 +16,7 @@ public class ImageProcessActivity extends Activity implements View.OnClickListen
     private Button mBtnMatrix;
     private Button mBtnXfermode;
     private Button mBtnShader;
+    private Button mBtnReflect;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class ImageProcessActivity extends Activity implements View.OnClickListen
         mBtnMatrix.setOnClickListener(this);
         mBtnXfermode.setOnClickListener(this);
         mBtnShader.setOnClickListener(this);
+        mBtnReflect.setOnClickListener(this);
 
     }
 
@@ -46,6 +48,7 @@ public class ImageProcessActivity extends Activity implements View.OnClickListen
         mBtnMatrix = (Button) findViewById(R.id.btn_Matrix);
         mBtnXfermode = (Button) findViewById(R.id.btn_Xfermode);
         mBtnShader = (Button) findViewById(R.id.btn_Shader);
+        mBtnReflect = (Button) findViewById(R.id.btn_Reflect);
 
     }
 
@@ -81,9 +84,18 @@ public class ImageProcessActivity extends Activity implements View.OnClickListen
                 startActivity(new Intent(this, RoundRectXfermodeActivity.class));
 
                 break;
+
             case R.id.btn_Shader:
                 startActivity(new Intent(this, BitmapShaderActivity.class));
 
+                break;
+
+            case R.id.btn_Reflect:
+                startActivity(new Intent(this, ReflectActivity.class));
+
+                break;
+
+            default:
                 break;
 
         }
