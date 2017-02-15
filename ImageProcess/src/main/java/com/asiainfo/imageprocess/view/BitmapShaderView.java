@@ -40,7 +40,7 @@ public class BitmapShaderView extends View {
         mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.test4);
         mBitmapShader = new BitmapShader(mBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
         mPaint.setShader(mBitmapShader);
-        canvas.drawCircle(300, 200, 150, mPaint);
+        canvas.drawCircle(300, 200, 270, mPaint);
 
 
     }
