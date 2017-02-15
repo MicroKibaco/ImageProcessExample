@@ -38,4 +38,10 @@
             android:text="矩阵"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
+    <Button
+            android:id="@+id/btn_Xfermode"
+            android:text="带画笔风格的xFerMode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 </LinearLayout>
