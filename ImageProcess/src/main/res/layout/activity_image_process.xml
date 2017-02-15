@@ -13,23 +13,23 @@
             android:layout_marginBottom="40dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="小木美图"/>
+            android:text="小木箱美图"/>
 
     <Button
             android:id="@+id/btn_primary_color"
-            android:text="色管三元素的调整"
+            android:text="色光三元素饱和度,亮度,透明度调整"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
     <Button
             android:id="@+id/btn_matrix_color"
-            android:text="实现图像的变化处理"
+            android:text="ColorMatrix颜色矩阵"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
     <Button
             android:id="@+id/btn_pixels_effect"
-            android:text="图片像素的调整"
+            android:text="图片像素的调整,实现不同效果"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 </LinearLayout>
