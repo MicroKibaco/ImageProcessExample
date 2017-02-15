@@ -41,6 +41,8 @@ public class PixelsActivity extends Activity {
 
         mFirstImageView.setImageBitmap(bitmap);
         mSecondImageView.setImageBitmap(ImageHelper.handlerImageNegative(bitmap));
+        mThereImageView.setImageBitmap(ImageHelper.handlerImagePixelsOldPhoto(bitmap));
+        mFourImageView.setImageBitmap(ImageHelper.handlerImagePixelsRelief(bitmap));
 
     }
 }

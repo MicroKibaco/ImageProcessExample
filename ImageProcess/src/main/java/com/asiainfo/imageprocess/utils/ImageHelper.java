@@ -121,4 +121,127 @@ public class ImageHelper {
 
     }
 
+    /***
+     * 怀旧效果
+     */
+    public static Bitmap handlerImagePixelsOldPhoto(Bitmap bm) {
+
+        int width = bm.getWidth();
+        int height = bm.getHeight();
+        int arraySize = width * height;
+        int color = 0;
+        int r, g, b, a, r1, g1, b1;
+
+        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        int[] oldPX = new int[arraySize];
+        int[] newPX = new int[arraySize];
+        bm.getPixels(oldPX, 0, width, 0, 0, width, height);
+
+        for (int i = 0; i < arraySize; i++) {
+
+            color = oldPX[i];
+            r = Color.red(color);
+            g = Color.green(color);
+            b = Color.blue(color);
+            a = Color.alpha(color);
+
+            r1 = (int) (0.393 * r + 0.769 * g + 0.189 * b);
+            g1 = (int) (0.349 * r + 0.686 * g + 0.168 * b);
+            b1 = (int) (0.272 * r + 0.534 * g + 0.131 * b);
+
+            if (r1 > 255) {
+
+                r1 = 255;
+
+            }
+
+
+            if (g1 > 255) {
+
+                g1 = 255;
+
+            }
+
+
+            if (b1 > 255) {
+
+                b1 = 255;
+
+            }
+
+            newPX[i] = Color.argb(a, r1, g1, b1);
+
+        }
+
+        bitmap.setPixels(newPX, 0, width, 0, 0, width, height);
+
+        return bitmap;
+
+    }
+
+    /***
+     * 浮雕效果
+     */
+    public static Bitmap handlerImagePixelsRelief(Bitmap bm) {
+
+        int width = bm.getWidth();
+        int height = bm.getHeight();
+        int arraySize = width * height;
+        int color = 0, colorBefore = 0;
+        int r, g, b, a, r1, g1, b1;
+
+        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        int[] oldPX = new int[arraySize];
+        int[] newPX = new int[arraySize];
+        bm.getPixels(oldPX, 0, width, 0, 0, width, height);
+
+        for (int i = 1; i < arraySize; i++) {
+
+            colorBefore = oldPX[i - 1];
+            r = Color.red(colorBefore);
+            g = Color.green(colorBefore);
+            b = Color.blue(colorBefore);
+            a = Color.alpha(colorBefore);
+
+
+            color = oldPX[i];
+            r1 = Color.red(color);
+            g1 = Color.green(color);
+            b1 = Color.blue(color);
+
+            r = (r - r1 + 127);
+            g = (g - g1 + 127);
+            b = (b - b1 + 127);
+
+
+            if (r > 255) {
+
+                r = 255;
+
+            }
+
+
+            if (g > 255) {
+
+                g = 255;
+
+            }
+
+
+            if (b > 255) {
+
+                b = 255;
+
+            }
+
+            newPX[i] = Color.argb(a, r, g, b);
+
+        }
+
+        bitmap.setPixels(newPX, 0, width, 0, 0, width, height);
+
+        return bitmap;
+
+    }
+
 }
