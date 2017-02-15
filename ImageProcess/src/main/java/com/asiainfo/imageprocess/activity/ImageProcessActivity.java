@@ -15,6 +15,7 @@ public class ImageProcessActivity extends Activity implements View.OnClickListen
     private Button mBtnPixelsEffect;
     private Button mBtnMatrix;
     private Button mBtnXfermode;
+    private Button mBtnShader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class ImageProcessActivity extends Activity implements View.OnClickListen
         mBtnPixelsEffect.setOnClickListener(this);
         mBtnMatrix.setOnClickListener(this);
         mBtnXfermode.setOnClickListener(this);
+        mBtnShader.setOnClickListener(this);
 
     }
 
@@ -43,6 +45,7 @@ public class ImageProcessActivity extends Activity implements View.OnClickListen
         mBtnPixelsEffect = (Button) findViewById(R.id.btn_pixels_effect);
         mBtnMatrix = (Button) findViewById(R.id.btn_Matrix);
         mBtnXfermode = (Button) findViewById(R.id.btn_Xfermode);
+        mBtnShader = (Button) findViewById(R.id.btn_Shader);
 
     }
 
@@ -76,6 +79,10 @@ public class ImageProcessActivity extends Activity implements View.OnClickListen
 
             case R.id.btn_Xfermode:
                 startActivity(new Intent(this, RoundRectXfermodeActivity.class));
+
+                break;
+            case R.id.btn_Shader:
+                startActivity(new Intent(this, BitmapShaderActivity.class));
 
                 break;
 
