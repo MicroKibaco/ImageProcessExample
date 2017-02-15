@@ -2,6 +2,7 @@ package com.asiainfo.imageprocess.utils;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
@@ -12,6 +13,7 @@ import android.graphics.Paint;
 
 
 public class ImageHelper {
+
     /***
      * @param hue        色调
      * @param saturation 饱和度
@@ -46,6 +48,76 @@ public class ImageHelper {
 
 
         return bmp;
+
+    }
+
+    /***
+     * 底片效果
+     */
+    public static Bitmap handlerImageNegative(Bitmap bm) {
+
+        int width = bm.getWidth();
+        int height = bm.getHeight();
+        int arraySize = width * height;
+        int color;
+        int r, g, b, a;
+
+        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        int[] oldPX = new int[arraySize];
+        int[] newPX = new int[arraySize];
+        bm.getPixels(oldPX, 0, width, 0, 0, width, height);
+
+        for (int i = 0; i < arraySize; i++) {
+
+            color = oldPX[i];
+            r = Color.red(color);
+            g = Color.green(color);
+            b = Color.blue(color);
+            a = Color.alpha(color);
+
+            r = 255 - r;
+            g = 255 - g;
+            b = 255 - b;
+
+            if (r > 255) {
+
+                r = 255;
+
+            } else if (r < 0) {
+
+                r = 0;
+
+            }
+
+
+            if (g > 255) {
+
+                g = 255;
+
+            } else if (g < 0) {
+
+                g = 0;
+
+            }
+
+
+            if (b > 255) {
+
+                b = 255;
+
+            } else if (b < 0) {
+
+                b = 0;
+
+            }
+
+            newPX[i] = Color.argb(a, r, g, b);
+
+        }
+
+        bitmap.setPixels(newPX, 0, width, 0, 0, width, height);
+
+        return bitmap;
 
     }
 
