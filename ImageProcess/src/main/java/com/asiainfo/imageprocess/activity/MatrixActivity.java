@@ -1,6 +1,7 @@
 package com.asiainfo.imageprocess.activity;
 
 import android.app.Activity;
+import android.graphics.Matrix;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -19,6 +20,7 @@ public class MatrixActivity extends Activity implements View.OnClickListener {
     private static final int SUDOKU_COUNTS = 9;//九宫格
     private static final int LINE = 3;//行
     private static final int ROW = 3;//列
+
     private GridLayout mEtGroup;
     private ImageMatrixView mImageViewMatrix;
     private Button mBtnChange;
@@ -77,9 +79,18 @@ public class MatrixActivity extends Activity implements View.OnClickListener {
         switch (v.getId()) {
 
             case R.id.btn_change:
+
+                getImageMatrix();
+                setImageMatrix();
+
                 break;
 
-            case R.id.btn_Matrix:
+            case R.id.btn_reset:
+
+                initImageMatrix();
+                getImageMatrix();
+                setImageMatrix();
+
                 break;
 
             default:
@@ -87,6 +98,7 @@ public class MatrixActivity extends Activity implements View.OnClickListener {
 
         }
     }
+
 
     /***
      * 添加EditText
@@ -120,6 +132,26 @@ public class MatrixActivity extends Activity implements View.OnClickListener {
             }
 
         }
+
+    }
+
+    private void getImageMatrix() {
+
+        for (int i = 0; i < SUDOKU_COUNTS; i++) {
+            EditText et = mEts[i];
+            mImageMatrix[i] = Float.parseFloat(et.getText().toString());
+
+        }
+
+    }
+
+
+    private void setImageMatrix() {
+
+        Matrix matrix = new Matrix();
+        matrix.setValues(mImageMatrix);
+        mImageViewMatrix.setImageMatrix(matrix);
+        mImageViewMatrix.invalidate();
 
     }
 }
